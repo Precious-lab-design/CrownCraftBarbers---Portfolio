@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Crown & Craft Barbers</title>
+
+    <meta name="description"
+          content="Crown & Craft Barbers - precision cuts, fades and grooming in Welkom, Free State." />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="site-header">
+
+        <nav class="navbar">
+
+            <div class="nav-container">
+
+                <!-- LOGO -->
+                <a class="brand" asp-controller="Home" asp-action="Index">
+
+                    <img src="~/images/Logo.jpg"
+                         alt="Crown & Craft Barbers Logo"
+                         class="brand-logo" />
+
+                    <div class="brand-text">
+                        <strong>CROWN & CRAFT</strong>
+                        <span>BARBERS</span>
+                    </div>
+
+                </a>
+
+
+                <!-- MOBILE MENU BUTTON -->
+                <button class="mobile-menu-btn"
+                        id="mobileMenuButton"
+                        type="button"
+                        aria-label="Open navigation menu">
+
+                    ☰
+
+                </button>
+
+
+                <!-- NAVIGATION LINKS -->
+                <div class="nav-links" id="navLinks">
+
+                    <a asp-controller="Home"
+                       asp-action="Index">
+                        Home
+                    </a>
+
+                    <a asp-controller="Services"
+                       asp-action="Index">
+                        Services
+                    </a>
+
+                    <a asp-controller="About"
+                       asp-action="Index">
+                        About
+                    </a>
+
+                    <a asp-controller="Contact"
+                       asp-action="Index">
+                        Contact
+                    </a>
+
+                    <a asp-controller="Booking"
+                       asp-action="Index"
+                       class="nav-book-btn">
+                        Book Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+            <!-- BRAND -->
+            <div class="footer-brand">
+
+                <img src="~/images/Logo.jpg"
+                     alt="Crown & Craft Barbers"
+                     class="footer-logo" />
+
+                <h3>CROWN & CRAFT</h3>
+
+                <p class="footer-tagline">
+                    Sharp cuts. Clean craft. Your style.
+                </p>
+
+                <p>
+                    Modern barbering with timeless technique.
+                    Precision grooming in the heart of Welkom.
+                </p>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+            <div>
+
+                <h4>Quick Links</h4>
+
+                <ul>
+
+                    <li>
+                        <a asp-controller="Home"
+                           asp-action="Index">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Services"
+                           asp-action="Index">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="About"
+                           asp-action="Index">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Contact"
+                           asp-action="Index">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Booking"
+                           asp-action="Index">
+                            Book an Appointment
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONTACT -->
+            <div>
+
+                <h4>Contact</h4>
+
+                <ul>
+
+                    <li>+27 10 555 0188</li>
+
+                    <li>
+                        hello@crowncraft.co.za
+                    </li>
+
+                    <li>
+                        18 Market Street
+                    </li>
+
+                    <li>
+                        Welkom
+                    </li>
+
+                    <li>
+                        Free State, South Africa
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- HOURS -->
+            <div>
+
+                <h4>Opening Hours</h4>
+
+                <ul>
+
+                    <li>
+                        Mon – Fri: 09:00 – 18:00
+                    </li>
+
+                    <li>
+                        Saturday: 08:00 – 16:00
+                    </li>
+
+                    <li>
+                        Sunday: Closed
+                    </li>
+
+                </ul>
+
+                <a asp-controller="Booking"
+                   asp-action="Index"
+                   class="footer-book-btn">
+                    Book Your Chair
+                </a>
+
+            </div>
+
+            <!-- SOCIAL LINKS -->
+            <div>
+
+                <h4>Follow Us</h4>
+
+                <ul class="footer-social-links">
+
+                    <li>
+                        <a href="https://www.instagram.com/crown_craft_barbers/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Instagram
+                        </a>
+                    </li>
+
+                    @* <li>
+                        <a href="https://www.facebook.com/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Facebook
+                        </a>
+                    </li> *@
+
+                    <li>
+                        <a href="https://www.tiktok.com/@@crown.craft.barbe?_r=1&_t=ZS-9A2VDcEQUR0"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            TikTok
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+
+
+        <!-- FOOTER BOTTOM -->
+        <div class="footer-bottom">
+
+            <div class="container footer-bottom-content">
+
+                <p>
+                    © @DateTime.Now.Year Crown & Craft Barbers.
+                    All rights reserved.
+                </p>
+
+                <div class="footer-legal">
+
+                    <a asp-controller="Legal"
+                       asp-action="Terms">
+                        Terms & Conditions
+                    </a>
+
+                    <a asp-controller="Legal"
+                       asp-action="Privacy">
+                        Privacy Policy
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

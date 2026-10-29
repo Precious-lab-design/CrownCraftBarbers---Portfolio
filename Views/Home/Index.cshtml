@@ -1,0 +1,372 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+    <!-- HERO CAROUSEL -->
+    <section class="hero hero-carousel">
+
+        <!-- Background slides -->
+        <div class="hero-slide active"
+             style="background-image: url('/images/Shop Interior.jpg');">
+        </div>
+
+        <div class="hero-slide"
+             style="background-image: url('/images/Skin Fade 2.jpg');">
+        </div>
+
+        <div class="hero-slide"
+             style="background-image: url('/images/Beard Sculpting 3.jpg');">
+        </div>
+
+        <div class="hero-slide"
+             style="background-image: url('/images/Confidence 4.jpg');">
+        </div>
+
+        <div class="hero-slide"
+             style="background-image: url('/images/Tools 5.jpg');">
+        </div>
+
+        <div class="hero-slide"
+             style="background-image: url('/images/Our Team.jpg');">
+        </div>
+
+        <!-- Dark overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Hero content -->
+        <div class="container hero-content">
+
+            <p class="hero-label">
+                CROWN & CRAFT BARBERS
+            </p>
+
+            <h1>
+                YOUR STYLE.<br />
+                CRAFTED WITH<br />
+                PRECISION.
+            </h1>
+
+            <p>
+                Modern barbering, timeless technique.
+                From precision fades to classic cuts and
+                complete grooming packages, leave looking
+                sharp and feeling confident.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a asp-controller="Booking"
+                   asp-action="Index"
+                   class="btn btn-primary">
+                    BOOK AN APPOINTMENT
+                </a>
+
+                <a asp-controller="Services"
+                   asp-action="Index"
+                   class="btn btn-outline">
+                    EXPLORE SERVICES
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Carousel controls -->
+        <button class="hero-arrow hero-prev"
+                type="button"
+                aria-label="Previous slide">
+            &#10094;
+        </button>
+
+        <button class="hero-arrow hero-next"
+                type="button"
+                aria-label="Next slide">
+            &#10095;
+        </button>
+
+        <!-- Carousel dots -->
+        <div class="hero-dots">
+
+            <button class="hero-dot active"
+                    type="button"
+                    aria-label="Slide 1"></button>
+
+            <button class="hero-dot"
+                    type="button"
+                    aria-label="Slide 2"></button>
+
+            <button class="hero-dot"
+                    type="button"
+                    aria-label="Slide 3"></button>
+
+            <button class="hero-dot"
+                    type="button"
+                    aria-label="Slide 4"></button>
+
+            <button class="hero-dot"
+                    type="button"
+                    aria-label="Slide 5"></button>
+
+            <button class="hero-dot"
+                    type="button"
+                    aria-label="Slide 6"></button>
+
+
+        </div>
+
+    </section>
+
+
+<!-- EXPERIENCE -->
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                The Crown & Craft Experience
+            </p>
+
+            <h2>
+                More than a haircut.
+                It's your craft.
+            </h2>
+
+            <p>
+                Every appointment is built around
+                precision, personal style and attention
+                to detail.
+            </p>
+
+        </div>
+
+
+        <div class="experience-grid">
+
+            <div class="experience-card">
+
+                <span class="experience-number">
+                    01
+                </span>
+
+                <h3>
+                    Precision
+                </h3>
+
+                <p>
+                    Every cut starts with understanding
+                    your style and finishing with attention
+                    to every detail.
+                </p>
+
+            </div>
+
+
+            <div class="experience-card">
+
+                <span class="experience-number">
+                    02
+                </span>
+
+                <h3>
+                    Craft
+                </h3>
+
+                <p>
+                    Experienced barbers combine traditional
+                    barbering techniques with contemporary
+                    styles.
+                </p>
+
+            </div>
+
+
+            <div class="experience-card">
+
+                <span class="experience-number">
+                    03
+                </span>
+
+                <h3>
+                    Confidence
+                </h3>
+
+                <p>
+                    Leave looking sharp, feeling refreshed
+                    and ready for whatever comes next.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DARK CTA -->
+<section class="cta">
+
+    <div class="container">
+
+        <p class="section-label">
+            Your next appointment
+        </p>
+
+        <h2>
+            COME IN FOR THE CRAFT.
+            LEAVE WITH YOUR CROWN.
+        </h2>
+
+        <p>
+            Reserve your chair at Crown & Craft Barbers.
+        </p>
+
+        <a asp-controller="Booking"
+           asp-action="Index"
+           class="btn btn-primary">
+            BOOK YOUR CHAIR
+        </a>
+
+    </div>
+
+</section>
+@* <!-- FIRST VISIT MODAL -->
+
+<div id="welcomeModal"
+     class="welcome-modal"
+     aria-hidden="true">
+
+    <div class="welcome-modal-overlay"></div>
+
+    <div class="welcome-modal-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="welcomeModalTitle">
+
+        <button type="button"
+                class="welcome-modal-close"
+                id="welcomeModalClose"
+                aria-label="Close">
+            &times;
+        </button>
+
+        <p class="section-label">
+            CROWN & CRAFT
+        </p>
+
+        <h2 id="welcomeModalTitle">
+            YOUR FIRST VISIT
+            <span>DESERVES A LITTLE EXTRA.</span>
+        </h2>
+
+        <p class="welcome-modal-text">
+            New to Crown & Craft? Enjoy <strong>10% off your first appointment</strong>
+            and experience sharp cuts, clean craft and your style.
+        </p>
+
+        <div class="welcome-modal-actions">
+
+            <a asp-controller="Booking"
+               asp-action="Index"
+               class="btn btn-primary">
+                BOOK YOUR FIRST VISIT
+            </a>
+
+            <button type="button"
+                    class="welcome-modal-secondary"
+                    id="welcomeModalDismiss">
+                MAYBE LATER
+            </button>
+
+        </div>
+
+    </div>
+
+</div> *@
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const slides = document.querySelectorAll(".hero-slide");
+        const dots = document.querySelectorAll(".hero-dot");
+
+        const previousButton = document.querySelector(".hero-prev");
+        const nextButton = document.querySelector(".hero-next");
+
+        let currentSlide = 0;
+        let slideTimer;
+
+        function showSlide(index) {
+
+            slides.forEach(function (slide) {
+                slide.classList.remove("active");
+            });
+
+            dots.forEach(function (dot) {
+                dot.classList.remove("active");
+            });
+
+            slides[index].classList.add("active");
+            dots[index].classList.add("active");
+
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+
+            let nextIndex = currentSlide + 1;
+
+            if (nextIndex >= slides.length) {
+                nextIndex = 0;
+            }
+
+            showSlide(nextIndex);
+        }
+
+        function previousSlide() {
+
+            let previousIndex = currentSlide - 1;
+
+            if (previousIndex < 0) {
+                previousIndex = slides.length - 1;
+            }
+
+            showSlide(previousIndex);
+        }
+
+        function startCarousel() {
+
+            clearInterval(slideTimer);
+
+            slideTimer = setInterval(function () {
+                nextSlide();
+            }, 5000);
+        }
+
+        nextButton.addEventListener("click", function () {
+            nextSlide();
+            startCarousel();
+        });
+
+        previousButton.addEventListener("click", function () {
+            previousSlide();
+            startCarousel();
+        });
+
+        dots.forEach(function (dot, index) {
+
+            dot.addEventListener("click", function () {
+                showSlide(index);
+                startCarousel();
+            });
+
+        });
+
+        showSlide(0);
+        startCarousel();
+
+    });
+</script>

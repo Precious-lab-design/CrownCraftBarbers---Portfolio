@@ -1,0 +1,186 @@
+﻿@model CrownCraftBarbers.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Confirmed";
+
+    var startDateTime = Model.AppointmentDate.Date
+        .Add(Model.AppointmentTime);
+
+    var duration = Model.Service?.DurationMinutes ?? 60;
+
+    var endDateTime = startDateTime.AddMinutes(duration);
+}
+
+<section class="confirmation-page">
+
+    <div class="container">
+
+        <div class="confirmation-card">
+
+            <div class="confirmation-icon">
+                ✓
+            </div>
+
+            <p class="section-label">
+                BOOKING CONFIRMED
+            </p>
+
+            <h1>
+                Your chair is reserved.
+            </h1>
+
+            <p class="confirmation-intro">
+                Thank you, @Model.CustomerName.
+                Your appointment at Crown & Craft Barbers has been successfully booked.
+            </p>
+
+            <div class="booking-reference">
+                <span>BOOKING REFERENCE</span>
+                <strong>
+                    CC-@Model.Id.ToString("D5")
+                </strong>
+            </div>
+
+            <div class="booking-summary">
+
+                <div class="summary-heading">
+                    <span>YOUR APPOINTMENT</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Service</span>
+                    <strong>
+                        @Model.Service?.Name
+                    </strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Barber</span>
+                    <strong>
+                        @Model.Barber?.Name
+                    </strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Date</span>
+                    <strong>
+                        @startDateTime.ToString("dddd, dd MMMM yyyy")
+                    </strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Time</span>
+                    <strong>
+                        @startDateTime.ToString("HH:mm")
+                        –
+                        @endDateTime.ToString("HH:mm")
+                    </strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Duration</span>
+                    <strong>
+                        @duration minutes
+                    </strong>
+                </div>
+
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <strong>
+                        R @Model.Service?.Price.ToString("0")
+                    </strong>
+                </div>
+
+            </div>
+
+            <div class="confirmation-location">
+
+                <div>
+                    <span class="location-label">
+                        LOCATION
+                    </span>
+
+                    <strong>
+                        Crown & Craft Barbers
+                    </strong>
+
+                    <p>
+                        18 Market Street<br />
+                       Welkom<br />
+                        Free State<br />
+                        South Africa
+                    </p>
+                </div>
+
+                <div>
+                    <span class="location-label">
+                        CONTACT
+                    </span>
+
+                    <p>
+                        +27 10 555 0188<br />
+                        hello@crowncraft.co.za
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="calendar-section">
+
+                <p class="section-label">
+                    ADD TO YOUR CALENDAR
+                </p>
+
+                <h2>
+                    Don't forget your appointment.
+                </h2>
+
+                <p>
+                    Add your confirmed appointment to your calendar so you
+                    have the date, time, service and location ready when you need them.
+                </p>
+
+                <div class="calendar-buttons">
+
+                    <a asp-controller="Booking"
+                       asp-action="GoogleCalendar"
+                       asp-route-id="@Model.Id"
+                       class="btn btn-primary">
+                        ADD TO GOOGLE CALENDAR
+                    </a>
+
+                    <a asp-controller="Booking"
+                       asp-action="CalendarFile"
+                       asp-route-id="@Model.Id"
+                       class="btn btn-outline">
+                        APPLE / OUTLOOK CALENDAR
+                    </a>
+
+                    <p class="calendar-note">
+                        Downloads a calendar event compatible with Apple Calendar and Outlook.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="confirmation-actions">
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="text-link">
+                    ← BACK TO HOME
+                </a>
+
+                <a asp-controller="Booking"
+                   asp-action="Index"
+                   class="text-link">
+                    BOOK ANOTHER APPOINTMENT →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

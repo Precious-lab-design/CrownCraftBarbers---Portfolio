@@ -1,0 +1,502 @@
+﻿@model IEnumerable<CrownCraftBarbers.Models.Service>
+
+@{
+    ViewData["Title"] = "Services";
+}
+
+<!-- SERVICES HERO -->
+
+<section class="page-hero services-hero">
+    <div class="container">
+
+        <p class="section-label">
+            THE CROWN & CRAFT MENU
+        </p>
+
+        <h1>
+            PRECISION.<br />
+            STYLE.<br />
+            GROOMING.
+        </h1>
+
+        <p class="page-hero-text">
+            From classic cuts and precision fades to complete grooming
+            packages, choose the service that suits your style.
+        </p>
+
+        <a asp-controller="Booking"
+           asp-action="Index"
+           class="btn btn-primary">
+            BOOK AN APPOINTMENT
+        </a>
+
+    </div>
+
+</section>
+
+<!-- SERVICES INTRO -->
+
+<section class="section services-intro">
+    <div class="container">
+
+        <div class="section-heading">
+            <p class="section-label">
+                OUR SERVICES
+            </p>
+
+            <h2>
+                CRAFTED FOR YOUR STYLE.
+            </h2>
+
+            <p>
+                Every service is delivered with attention to detail,
+                professional technique and a finish designed around you.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICES MENU -->
+
+<section class="services-menu">
+    <div class="container">
+
+        <div class="services-menu-header">
+            <div>
+                <p class="section-label">
+                    BARBERING & GROOMING
+                </p>
+
+                <h2>
+                    THE MENU
+                </h2>
+            </div>
+
+            <p class="services-note">
+                All prices are in South African Rand (ZAR).
+                Please allow enough time for your selected service.
+            </p>
+        </div>
+
+
+        <div class="services-list">
+
+            @foreach (var service in Model)
+            {
+                <article class="service-item">
+
+                    <div class="service-number">
+                        @service.Id.ToString("00")
+                    </div>
+
+                    <div class="service-icon">
+                        @service.Icon
+                    </div>
+
+                    <div class="service-details">
+
+                        <h3>
+                            @service.Name
+                        </h3>
+
+                        <p>
+                            @service.Description
+                        </p>
+
+                        <span class="service-duration">
+                            @service.DurationMinutes minutes
+                        </span>
+
+                    </div>
+
+                    <div class="service-price">
+                        <strong>
+                            R @service.Price.ToString("0")
+                        </strong>
+                    </div>
+
+                    <div class="service-action">
+                        <a asp-controller="Booking"
+                           asp-action="Index"
+                           asp-route-serviceId="@service.Id"
+                           class="service-book-link">
+                            BOOK
+                            <span>→</span>
+                        </a>
+                    </div>
+
+                </article>
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PACKAGES FEATURE -->
+
+<section class="section package-section">
+    <div class="container package-grid">
+
+        <div class="package-content">
+
+            <p class="section-label">
+                THE ROYAL EXPERIENCE
+            </p>
+
+            <h2>
+                COMPLETE GROOMING.
+                ONE APPOINTMENT.
+            </h2>
+
+            <p>
+                Looking for the complete experience? Our Royal Package
+                brings together precision barbering and professional
+                grooming in one appointment.
+            </p>
+
+            <p>
+                Perfect for special occasions, important events or
+                simply treating yourself to a complete refresh.
+            </p>
+
+            <a asp-controller="Booking"
+               asp-action="Index"
+               class="btn btn-primary">
+                BOOK THE ROYAL PACKAGE
+            </a>
+
+        </div>
+
+
+        <div class="package-card">
+
+            <div class="package-card-top">
+                <span>♛</span>
+
+                <p>
+                    CROWN & CRAFT
+                </p>
+            </div>
+
+            <h3>
+                THE ROYAL PACKAGE
+            </h3>
+
+            <p>
+                Haircut, beard grooming and premium finishing treatment.
+            </p>
+
+            <div class="package-price">
+                <strong>R350</strong>
+                <span>90 MINUTES</span>
+            </div>
+
+            <ul>
+                <li>Precision haircut</li>
+                <li>Professional beard grooming</li>
+                <li>Premium finishing treatment</li>
+                <li>Personalised styling</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICE PROMISE -->
+
+<section class="section service-promise">
+    <div class="container">
+
+        <div class="section-heading centered">
+
+            <p class="section-label">
+                THE CROWN & CRAFT STANDARD
+            </p>
+
+            <h2>
+                EVERY DETAIL MATTERS.
+            </h2>
+
+            <p>
+                Your appointment isn't just about the final look.
+                It's about the experience from the moment you sit
+                in the chair.
+            </p>
+
+        </div>
+
+
+        <div class="promise-grid">
+
+            <div class="promise-card">
+                <span>01</span>
+
+                <h3>
+                    Consultation
+                </h3>
+
+                <p>
+                    We take the time to understand the style,
+                    length and finish you're looking for.
+                </p>
+            </div>
+
+
+            <div class="promise-card">
+                <span>02</span>
+
+                <h3>
+                    Precision
+                </h3>
+
+                <p>
+                    Our approach focuses on clean lines,
+                    balanced shape and careful finishing.
+                </p>
+            </div>
+
+
+            <div class="promise-card">
+                <span>03</span>
+
+                <h3>
+                    Finish
+                </h3>
+
+                <p>
+                    Every appointment ends with attention to
+                    styling and the details that complete your look.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FINAL CTA -->
+
+<section class="cta">
+    <div class="container">
+
+        <p class="section-label">
+            READY WHEN YOU ARE
+        </p>
+
+        <h2>
+            FIND YOUR NEXT LOOK.
+        </h2>
+
+        <p>
+            Choose your service and reserve your chair at
+            Crown & Craft Barbers.
+        </p>
+
+        <a asp-controller="Booking"
+           asp-action="Index"
+           class="btn btn-primary">
+            BOOK YOUR CHAIR
+        </a>
+
+    </div>
+@* 
+    @section Scripts {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const modal = document.getElementById("servicesModal");
+                const closeButton = document.getElementById("servicesModalClose");
+                const laterButton = document.getElementById("servicesModalLater");
+                const overlay = modal.querySelector(".welcome-modal-overlay");
+
+                function openModal() {
+                    modal.classList.add("is-visible");
+                    modal.setAttribute("aria-hidden", "false");
+                    document.body.classList.add("modal-open");
+                }
+
+                function closeModal() {
+                    modal.classList.remove("is-visible");
+                    modal.setAttribute("aria-hidden", "true");
+                    document.body.classList.remove("modal-open");
+                }
+
+                // Show popup when Services page opens
+                setTimeout(openModal, 700);
+
+                closeButton.addEventListener("click", closeModal);
+                laterButton.addEventListener("click", closeModal);
+                overlay.addEventListener("click", closeModal);
+
+                document.addEventListener("keydown", function (event) {
+                    if (event.key === "Escape") {
+                        closeModal();
+                    }
+                });
+            });
+        </script>
+    }*@
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const modal = document.getElementById("welcomeModal");
+                const closeButton = document.getElementById("welcomeModalClose");
+                const dismissButton = document.getElementById("welcomeModalDismiss");
+                const overlay = modal.querySelector(".welcome-modal-overlay");
+                const bookingButton = modal.querySelector(".btn-primary");
+
+                function openModal() {
+                    modal.classList.add("is-visible");
+                    modal.setAttribute("aria-hidden", "false");
+                    document.body.classList.add("modal-open");
+                }
+
+                function closeModal() {
+                    modal.classList.remove("is-visible");
+                    modal.setAttribute("aria-hidden", "true");
+                    document.body.classList.remove("modal-open");
+                }
+
+                // Show the popup unless the discount has already been used
+                const discountUsed =
+                    localStorage.getItem("crownCraftFirstVisitDiscountUsed");
+
+                if (!discountUsed) {
+                    setTimeout(openModal, 700);
+                }
+
+                // Close popup without marking discount as used
+                closeButton.addEventListener("click", closeModal);
+                dismissButton.addEventListener("click", closeModal);
+                overlay.addEventListener("click", closeModal);
+
+                // User clicked BOOK YOUR FIRST VISIT
+                bookingButton.addEventListener("click", function () {
+
+                    // Remember that the customer has chosen to use the offer
+                    localStorage.setItem(
+                        "crownCraftFirstVisitDiscountUsed",
+                        "true"
+                    );
+
+                    closeModal();
+                });
+
+                // Close popup with Escape
+                document.addEventListener("keydown", function (event) {
+                    if (event.key === "Escape") {
+                        closeModal();
+                    }
+                });
+            });
+        </script>
+    }
+</section> 
+
+
+@* <!-- SERVICES POPUP -->
+<div id="servicesModal" class="welcome-modal" aria-hidden="true">
+    <div class="welcome-modal-overlay"></div>
+
+    <div class="welcome-modal-content" role="dialog" aria-modal="true" aria-labelledby="servicesModalTitle">
+
+        <button type="button"
+                class="welcome-modal-close"
+                id="servicesModalClose"
+                aria-label="Close">
+            &times;
+        </button>
+
+        <p class="section-label">CROWN & CRAFT</p>
+
+        <h2 id="servicesModalTitle">
+            FIND YOUR
+            <span>PERFECT SERVICE.</span>
+        </h2>
+
+        <p class="welcome-modal-text">
+            Explore our professional grooming services, compare prices and
+            choose the service that suits your style. When you're ready,
+            reserve your chair online.
+        </p>
+
+        <div class="welcome-modal-actions">
+            <a asp-controller="Booking"
+               asp-action="Index"
+               class="btn btn-primary">
+                BOOK YOUR CHAIR
+            </a>
+
+            <button type="button"
+                    class="welcome-modal-secondary"
+                    id="servicesModalLater">
+                MAYBE LATER
+            </button>
+        </div>
+    </div>
+</div>
+         *@
+
+<!-- FIRST VISIT MODAL -->
+
+<div id="welcomeModal"
+     class="welcome-modal"
+     aria-hidden="true">
+
+    <div class="welcome-modal-overlay"></div>
+
+    <div class="welcome-modal-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="welcomeModalTitle">
+
+        <button type="button"
+                class="welcome-modal-close"
+                id="welcomeModalClose"
+                aria-label="Close">
+            &times;
+        </button>
+
+        <p class="section-label">
+            CROWN & CRAFT
+        </p>
+
+        <h2 id="welcomeModalTitle">
+            YOUR FIRST VISIT
+            <span>DESERVES A LITTLE EXTRA.</span>
+        </h2>
+
+        <p class="welcome-modal-text">
+            New to Crown & Craft? Enjoy <strong>10% off your first appointment</strong>
+            and experience sharp cuts, clean craft and your style.
+        </p>
+
+        <div class="welcome-modal-actions">
+
+            <a asp-controller="Booking"
+               asp-action="Index"
+               class="btn btn-primary">
+                BOOK YOUR FIRST VISIT
+            </a>
+
+            <button type="button"
+                    class="welcome-modal-secondary"
+                    id="welcomeModalDismiss">
+                MAYBE LATER
+            </button>
+
+        </div>
+
+    </div>
+
+</div> 

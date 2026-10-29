@@ -1,0 +1,445 @@
+﻿@model CrownCraftBarbers.Models.Booking
+
+@{
+    ViewData["Title"] = "Book an Appointment";
+
+var services = ViewBag.Services as List<CrownCraftBarbers.Models.Service>
+               ?? new List<CrownCraftBarbers.Models.Service>();
+
+    var barbers = ViewBag.Barbers as List<CrownCraftBarbers.Models.Barber>
+                  ?? new List<CrownCraftBarbers.Models.Barber>();
+
+    int? selectedServiceId = ViewBag.SelectedServiceId;
+
+}
+
+<section class="booking-hero">
+    <div class="container">
+
+        <p class="section-label">
+            CROWN & CRAFT
+        </p>
+
+        <h1>
+            RESERVE<br />
+            YOUR CHAIR.
+        </h1>
+
+        <p>
+            Choose your service, select your barber and find a time
+            that works for you.
+        </p>
+
+    </div>
+    
+</section>
+
+<section class="booking-section">
+    <div class="container booking-layout">
+
+        <!-- BOOKING FORM -->
+
+        <div class="booking-form-wrapper">
+
+            <div class="booking-heading">
+
+                <p class="section-label">
+                    ONLINE BOOKING
+                </p>
+
+                <h2>
+                    MAKE AN APPOINTMENT
+                </h2>
+
+                <p>
+                    Complete the details below to reserve your appointment.
+                </p>
+
+            </div>
+
+
+            <form asp-controller="Booking"
+                  asp-action="Index"
+                  method="post"
+                  class="booking-form">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly"
+                     class="validation-summary">
+                </div>
+
+
+                <!-- SERVICE -->
+
+                <div class="booking-step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <div class="step-content">
+
+                        <label asp-for="ServiceId">
+                            SELECT YOUR SERVICE
+                        </label>
+
+                        <select asp-for="ServiceId"
+                                class="form-control"
+                                required>
+
+                            <option value="">
+                                Choose a service
+                            </option>
+
+                            @foreach (var service in services)
+                            {
+                                if (selectedServiceId == service.Id)
+                                {
+                                    <option value="@service.Id" selected>
+                                        @service.Name — R @service.Price.ToString("0")
+                                        (@service.DurationMinutes min)
+                                    </option>
+                                }
+                                else
+                                {
+                                    <option value="@service.Id">
+                                        @service.Name — R @service.Price.ToString("0")
+                                        (@service.DurationMinutes min)
+                                    </option>
+                                }
+                            }
+
+                        </select>
+
+                        <span asp-validation-for="ServiceId"
+                              class="field-error">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BARBER -->
+
+                <div class="booking-step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <div class="step-content">
+
+                        <label asp-for="BarberId">
+                            CHOOSE YOUR BARBER
+                        </label>
+
+                        <select asp-for="BarberId"
+                                class="form-control"
+                                required>
+
+                            <option value="">
+                                Choose a barber
+                            </option>
+
+                            @foreach (var barber in barbers)
+                            {
+                                <option value="@barber.Id">
+                                    @barber.Name — @barber.Role
+                                </option>
+                            }
+
+                        </select>
+
+                        <span asp-validation-for="BarberId"
+                              class="field-error">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DATE & TIME -->
+
+                <div class="booking-step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <div class="step-content">
+
+                        <label>
+                            SELECT DATE & TIME
+                        </label>
+
+                        <div class="date-time-grid">
+
+                            <div>
+
+                                <span class="input-label">
+                                    DATE
+                                </span>
+
+                                <input asp-for="AppointmentDate"
+                                       type="date"
+                                       id="appointmentDate"
+                                       class="form-control"
+                                       min="@DateTime.Now.ToString("yyyy-MM-dd")"
+                                       required />
+
+                                <span asp-validation-for="AppointmentDate"
+                                      class="field-error">
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="input-label">
+                                    TIME
+                                </span>
+
+                                <select asp-for="AppointmentTime"
+                                        class="form-control"
+                                        required>
+
+                                    <option value="">
+                                        Choose a time
+                                    </option>
+
+                                    <option value="09:00:00">09:00</option>
+                                    <option value="09:30:00">09:30</option>
+                                    <option value="10:00:00">10:00</option>
+                                    <option value="10:30:00">10:30</option>
+                                    <option value="11:00:00">11:00</option>
+                                    <option value="11:30:00">11:30</option>
+                                    <option value="12:00:00">12:00</option>
+                                    <option value="12:30:00">12:30</option>
+                                    <option value="13:00:00">13:00</option>
+                                    <option value="13:30:00">13:30</option>
+                                    <option value="14:00:00">14:00</option>
+                                    <option value="14:30:00">14:30</option>
+                                    <option value="15:00:00">15:00</option>
+                                    <option value="15:30:00">15:30</option>
+                                    <option value="16:00:00">16:00</option>
+                                    <option value="16:30:00">16:30</option>
+                                    <option value="17:00:00">17:00</option>
+                                    <option value="17:30:00">17:30</option>
+                                </select>
+
+                                <span asp-validation-for="AppointmentTime"
+                                      class="field-error">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <p class="booking-note">
+                            Monday–Friday: 09:00–18:00 · Saturday: 08:00–16:00 · Sunday: Closed
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CUSTOMER INFORMATION -->
+
+                <div class="booking-step">
+
+                    <div class="step-number">
+                        04
+                    </div>
+
+                    <div class="step-content">
+
+                        <label>
+                            YOUR DETAILS
+                        </label>
+
+                        <div class="form-grid">
+
+                            <div>
+                                <label asp-for="CustomerName">
+                                    FULL NAME
+                                </label>
+
+                                <input asp-for="CustomerName"
+                                       class="form-control"
+                                       placeholder="Your full name"
+                                       required />
+
+                                <span asp-validation-for="CustomerName"
+                                      class="field-error">
+                                </span>
+                            </div>
+
+
+                            <div>
+                                <label asp-for="CustomerPhone">
+                                    PHONE NUMBER
+                                </label>
+
+                                <input asp-for="CustomerPhone"
+                                       class="form-control"
+                                       placeholder="+27..."
+                                       required />
+
+                                <span asp-validation-for="CustomerPhone"
+                                      class="field-error">
+                                </span>
+                            </div>
+
+
+                            <div class="full-width">
+
+                                <label asp-for="CustomerEmail">
+                                    EMAIL ADDRESS
+                                </label>
+
+                                <input asp-for="CustomerEmail"
+                                       type="email"
+                                       class="form-control"
+                                       placeholder="you@example.com"
+                                       required />
+
+                                <span asp-validation-for="CustomerEmail"
+                                      class="field-error">
+                                </span>
+
+                            </div>
+
+
+                            <div class="full-width">
+
+                                <label asp-for="Notes">
+                                    ADDITIONAL NOTES
+                                    <span>(OPTIONAL)</span>
+                                </label>
+
+                                <textarea asp-for="Notes"
+                                          class="form-control"
+                                          rows="4"
+                                          placeholder="Anything your barber should know?"></textarea>
+
+                                <span asp-validation-for="Notes"
+                                      class="field-error">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIRM -->
+
+                <div class="booking-confirm">
+
+                    <div>
+                        <p class="booking-confirm-title">
+                            READY TO RESERVE YOUR CHAIR?
+                        </p>
+
+                        <p>
+                            By submitting this form, your appointment
+                            will be saved to our booking system.
+                        </p>
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary booking-submit">
+                        CONFIRM BOOKING
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="booking-sidebar">
+
+            <div class="booking-sidebar-card">
+
+                <p class="section-label">
+                    CROWN & CRAFT
+                </p>
+
+                <h3>
+                    YOUR APPOINTMENT
+                </h3>
+
+                <p>
+                    Select your service, barber, date and time.
+                    We'll take care of the rest.
+                </p>
+
+                <div class="booking-info">
+
+                    <div>
+                        <strong>LOCATION</strong>
+                        <span>
+                            18 Market Street<br />
+                            Welkom, Free State
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>PHONE</strong>
+                        <span>
+                            +27 10 555 0188
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>HOURS</strong>
+                        <span>
+                            Mon–Fri: 09:00–18:00<br />
+                            Sat: 08:00–16:00<br />
+                            Sun: Closed
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        const appointmentDate = document.getElementById("appointmentDate");
+
+        appointmentDate.addEventListener("change", function () {
+            if (!this.value) {
+                return;
+            }
+
+            const selectedDate = new Date(this.value + "T00:00:00");
+
+            // Sunday = 0
+            if (selectedDate.getDay() === 0) {
+                alert("Crown & Craft Barbers is closed on Sundays. Please select another date.");
+                this.value = "";
+            }
+        });
+    </script>
+}
